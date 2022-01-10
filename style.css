@@ -7,3 +7,35 @@ td, th {
     border: 1px solid black;
     padding: 5px 10px;
 }
+
+.css-grid-table,
+.css-grid-table-header,
+.css-grid-table-body {
+    display: grid;
+}
+
+.css-grid-table {
+    grid-template-rows: auto auto;
+    width: 100%;
+}
+
+.css-grid-table-header,
+.css-grid-table-body {
+    grid-template-columns: 10rem 10rem 10rem;
+    line-height: 24px;
+}
+
+.css-grid-table-header {
+    grid-column-gap: 2px;
+    grid-template-rows: auto;
+}
+
+.css-grid-table-body {
+    grid-template-rows: auto auto auto;
+}
+
+.css-grid-table-header div {
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(191, 191, 191);
+}
