@@ -9,25 +9,16 @@
 <h1>Coffee!</h1>
 
 <form>
-    <label for="roast-selection"></label>
+    <label for="roast-selection">Roast</label>
     <select id="roast-selection">
         <option>light</option>
         <option>medium</option>
         <option>dark</option>
     </select>
+    <label for="coffeeSearch">Coffee Name</label>
+    <input type="search" id="coffeeSearch"/>
     <input id="submit" type="submit"/>
 </form>
-<!-- OLD HTML TABLE-->
-<!--<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>NAME</th>
-        <th>ROAST</th>
-    </tr>
-    </thead>
-    <tbody id="coffees"></tbody>
-</table>-->
 
 <div class="css-grid-table">
     <div class="css-grid-table-header">
@@ -35,21 +26,10 @@
         <div>NAME</div>
         <div>ROAST</div>
     </div>
-    <!-- Table Body, coffees will be inserted here from js -->
     <div class="css-grid-table-body" id="coffees">
-        <!--
-                <div>1</div>
-                <div>Light City</div>
-                <div>light</div>
-
-                <div>1</div>
-                <div>Light City</div>
-                <div>light</div>
-        -->
-
+        <!-- JS Inserts the rest of the div table here, with coffees -->
     </div>
 </div>
-
 <script src="main.js"></script>
 </body>
 </html>

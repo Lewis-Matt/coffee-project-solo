@@ -1,15 +1,13 @@
 "use strict"
 // Inserts div table (that will contain coffees) into html
 function renderCoffee(coffee) {
-    let html = '<div class="coffee row">';
-    html += '<div class="ID-Column">' + coffee.id + '</div>';
+    let html = '<div class="ID-Column">' + coffee.id + '</div>';
     html += '<div class="column">' + coffee.name + '</div>';
     html += '<div class="column">' + coffee.roast + '</div>';
-    html += '</div>';
     return html;
 }
 
-
+// Adds the actual coffees to the table body created by renderCoffee()
 function renderCoffees(coffees) {
     let html = '';
     for(let i = coffees.length - 1; i >= 0; i--) {
@@ -27,7 +25,7 @@ function updateCoffees(e) {
             filteredCoffees.push(coffee);
         }
     });
-    // declared in the global scope on line 52 id="coffees"
+    // tbody declared in the global scope on line 52 id = "coffees"
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
@@ -49,10 +47,11 @@ let coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+// The first div of the body of the table
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
-
+// Changes the body of the table to have the divs created by renderCoffee() and the coffees created by renderCoffees()
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
