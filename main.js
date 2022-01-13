@@ -1,14 +1,14 @@
 "use strict"
-
+// Inserts div table (that will contain coffees) into html
 function renderCoffee(coffee) {
-    let html = '<tr class="coffee">';
-    html += '<td>' + coffee.id + '</td>';
-    html += '<td>' + coffee.name + '</td>';
-    html += '<td>' + coffee.roast + '</td>';
-    html += '</tr>';
-
+    let html = '<div class="coffee row">';
+    html += '<div class="ID-Column">' + coffee.id + '</div>';
+    html += '<div class="column">' + coffee.name + '</div>';
+    html += '<div class="column">' + coffee.roast + '</div>';
+    html += '</div>';
     return html;
 }
+
 
 function renderCoffees(coffees) {
     let html = '';
@@ -27,6 +27,7 @@ function updateCoffees(e) {
             filteredCoffees.push(coffee);
         }
     });
+    // declared in the global scope on line 52 id="coffees"
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
