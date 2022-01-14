@@ -16,13 +16,13 @@
         <option>dark</option>
     </select>
     <label for="coffeeSearch">Coffee Name</label>
-    <input type="search" id="coffeeSearch"/>
+    <input type="search" id="coffeeSearch" onkeyup="searchCoffee()" placeholder="Search for a coffee."/>
     <input id="submit" type="submit"/>
 </form>
 
 <div class="css-grid-table">
     <div class="css-grid-table-header">
-        <div class="ID-Column">ID</div>
+        <div class="hidden">ID</div>
         <div>NAME</div>
         <div>ROAST</div>
     </div>

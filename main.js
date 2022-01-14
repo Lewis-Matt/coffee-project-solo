@@ -1,16 +1,21 @@
 "use strict"
 // Inserts div table (that will contain coffees) into html
 function renderCoffee(coffee) {
-    let html = '<div class="ID-Column">' + coffee.id + '</div>';
-    html += '<div class="column">' + coffee.name + '</div>';
-    html += '<div class="column">' + coffee.roast + '</div>';
+    let html = '<div class="hidden">' + coffee.id + '</div>';
+    html += '<div>' + coffee.name + '</div>';
+    html += '<div>' + coffee.roast + '</div>';
     return html;
 }
 
 // Adds the actual coffees to the table body created by renderCoffee()
 function renderCoffees(coffees) {
     let html = '';
-    for(let i = coffees.length - 1; i >= 0; i--) {
+    // ORIGINAL LOOP
+    // for(let i = coffees.length - 1; i >= 0; i--) {
+    //     html += renderCoffee(coffees[i]);
+    // }
+    // This version puts the coffees in ID order, since the array (line 37) is already sorted
+    for(let i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -46,6 +51,27 @@ let coffees = [
     {id: 13, name: 'Italian', roast: 'dark'},
     {id: 14, name: 'French', roast: 'dark'},
 ];
+
+// Search and sort
+/*function searchCoffee() {
+    let input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("coffeeSearch");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("coffees");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}*/
+
 
 // The first div of the body of the table
 let tbody = document.querySelector('#coffees');
