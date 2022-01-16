@@ -3,34 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<h1>Coffee!</h1>
-
-<form>
-    <label for="roast-selection">Roast</label>
-    <select id="roast-selection">
-        <option>light</option>
-        <option>medium</option>
-        <option>dark</option>
-    </select>
-    <label for="coffeeSearch">Coffee Name</label>
-    <input type="search" id="coffeeSearch" onkeyup="searchCoffee()" placeholder="Search for a coffee."/>
-    <input id="submit" type="submit"/>
-</form>
-
-<div class="css-grid-table">
-    <div class="css-grid-table-header">
-        <div class="hidden">ID</div>
-        <div>NAME</div>
-        <div>ROAST</div>
+<body class="my-5">
+<div class="container text-center">
+    <div class="text-center">
+        <h1>Coffee!</h1>
     </div>
-    <div class="css-grid-table-body" id="coffees">
-        <!-- JS Inserts the rest of the div table here, with coffees -->
+    <div class="row">
+        <div class="col-6">
+            <div class="text-center card">
+                <div class="card-header h3 card-top">Look for a Coffee</div>
+                <div class="row">
+                    <form class="card-body text-center card-body-color">
+                        <div class="w-100">
+                            <label for="roast-selection">Roast</label>
+                            <select id="roast-selection" class="w-100 rounded">
+                                <option>all</option>
+                                <option>light</option>
+                                <option>medium</option>
+                                <option>dark</option>
+                            </select>
+                        </div>
+
+                        <div class="w-100">
+                            <label for="coffee-search">Coffee</label>
+                            <input type="text" id="coffee-search" class="w-100 rounded" onkeyup="searchCoffee()">
+                        </div>
+                        <input id="submit" class="w-100 my-2 mx-0" type="submit"/>
+
+                    </form>
+                </div>
+            </div>
+            <div class="card text-center">
+                <h3 class="card-header card-top">New Coffee</h3>
+                <div class="row">
+                    <form class="card-body card-body-color">
+                        <div class="w-100">
+                            <label for="which-roast">Roast</label>
+                            <select id="which-roast" class="w-100 rounded">
+                                <option>light</option>
+                                <option>medium</option>
+                                <option>dark</option>
+                            </select>
+                        </div>
+                        <div class="w-100">
+                            <label for="new-coffee">Coffee Name</label>
+                            <input type="text" id="new-coffee" class="w-100 rounded">
+                            <input id="submitNewCoffee" class="w-100 my-2 mx-0" type="submit"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="d-flex justify-content-center">
+                <div class="css-grid-table w-100 card" id="table">
+                    <div class="card-header card-top">
+                        <div class="row">
+                            <div class="hidden">ID</div>
+                            <div class="col-6 border-dark h4">NAME</div>
+                            <div class="col-6 border-dark border-left h4">ROAST</div>
+                        </div>
+                    </div>
+                    <!-- -->
+                    <div id="coffees" class="row card-body text-center card-body-color">
+                        <!-- JS Inserts Table Data Here-->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
 <script src="main.js"></script>
 </body>
 </html>
-

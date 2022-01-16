@@ -1,48 +1,47 @@
-/*
-table {
-    border-collapse: collapse;
-    margin: 15px 0;
+body {
+    background-color: #c7ccdb;
 }
 
-td, th {
-    border: 1px solid black;
-    padding: 5px 10px;
+.card-top {
+    background-color: #e1e5ee;
 }
-*/
+
+.card-body-color {
+    /*background-color: ;*/
+}
 
 .css-grid-table,
 .css-grid-table-header,
 .css-grid-table-body {
     display: grid;
 }
-/* The number of rows is updated by the js */
+
 .css-grid-table {
     grid-template-rows: auto auto;
-    width: 100%;
+    width: 80%;
 }
-/* Header and body are 3 columns, but the ID column should be hidden */
+
 .css-grid-table-header,
 .css-grid-table-body {
-    grid-template-columns: 15rem 15rem;
+    grid-template-columns: auto auto;
     line-height: 24px;
 }
-/* Header is one row, with a gap */
+
 .css-grid-table-header {
     grid-column-gap: 2px;
     grid-template-rows: auto;
 }
-/* Why are there rows for this when there are already rows set on the .css-grid-template */
+
 .css-grid-table-body {
     grid-template-rows: auto auto;
 }
-/* Styling for the header */
+
 .css-grid-table-header div {
     text-align: center;
     font-weight: bold;
     background-color: rgb(191, 191, 191);
 }
 
-/* Hidden Elements */
 .hidden {
     display: none;
 }

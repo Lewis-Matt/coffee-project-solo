@@ -1,9 +1,10 @@
 "use strict"
+
 // Inserts div table (that will contain coffees) into html
 function renderCoffee(coffee) {
     let html = '<div class="hidden">' + coffee.id + '</div>';
-    html += '<div>' + coffee.name + '</div>';
-    html += '<div>' + coffee.roast + '</div>';
+    html += '<div class="coffee-name col-6">' + coffee.name + '</div>';
+    html += '<div class="col-6">' + coffee.roast + '</div>';
     return html;
 }
 
@@ -14,8 +15,8 @@ function renderCoffees(coffees) {
     // for(let i = coffees.length - 1; i >= 0; i--) {
     //     html += renderCoffee(coffees[i]);
     // }
-    // This version puts the coffees in ID order, since the array (line 37) is already sorted
-    for(let i = 0; i < coffees.length; i++) {
+    // This version puts the coffees in ID order, since the 'coffees' array is already sorted
+    for (let i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -25,13 +26,51 @@ function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     let selectedRoast = roastSelection.value;
     let filteredCoffees = [];
-    coffees.forEach(function(coffee) {
+    coffees.forEach(function (coffee) {
         if (coffee.roast === selectedRoast) {
+            filteredCoffees.push(coffee);
+            // Select all roasts
+        } else if (roastSelection.value === "all") {
             filteredCoffees.push(coffee);
         }
     });
-    // tbody declared in the global scope on line 52 id = "coffees"
+    // tbody declared in the global scope, id = "coffees"
     tbody.innerHTML = renderCoffees(filteredCoffees);
+}
+
+// LIVE SEARCH FUNCTION
+let searchInput = document.querySelector('#coffee-search');
+
+function searchCoffee() {
+    let filter = searchInput.value.toUpperCase();
+    let filteredCoffees = [];
+    console.log(filter); // TEST LOG
+    coffees.forEach(function (coffee) {
+        if (coffee.name.toUpperCase().includes(filter)) {
+            filteredCoffees.push(coffee);
+            console.log(filteredCoffees);
+        }
+    });
+    tbody.innerHTML = renderCoffees(filteredCoffees);
+}
+
+// ADD NEW COFFEE
+let newCoffeeName = document.querySelector('#new-coffee');
+let newCoffeeRoast = document.querySelector('#which-roast');
+let submitCoffee = document.getElementById("submitNewCoffee");
+submitCoffee.addEventListener("click", addNewCoffee);
+
+function addNewCoffee(newCoffeeProduct) {
+    newCoffeeProduct.preventDefault();
+    let addNewID = coffees.length + 1;
+    let addNewName = newCoffeeName.value.toString();
+    let addNewRoast = newCoffeeRoast.value.toString();
+    newCoffeeProduct = {id: addNewID, name: addNewName, roast: addNewRoast,};
+    coffees.push(newCoffeeProduct);
+    // Adds a key: 'newCoffee' with the value of the newCoffeeProduct object as a string, to local storage.
+    // At the moment, only stores the last coffee added...
+    localStorage.setItem('newCoffee', JSON.stringify(newCoffeeProduct));
+    tbody.innerHTML = renderCoffees(coffees);
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
@@ -52,31 +91,14 @@ let coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
-// Search and sort
-/*function searchCoffee() {
-    let input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("coffeeSearch");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("coffees");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}*/
-
-
 // The first div of the body of the table
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
+// Gets 'newCoffee' key from local and parses the value (since it was an object and local storage only stores strings)
+let addedCoffees = localStorage.getItem('newCoffee');
+let addedCoffees2 = JSON.parse(addedCoffees)
+coffees.push(addedCoffees2);
 // Changes the body of the table to have the divs created by renderCoffee() and the coffees created by renderCoffees()
 tbody.innerHTML = renderCoffees(coffees);
 
