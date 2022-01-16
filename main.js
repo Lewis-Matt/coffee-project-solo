@@ -95,11 +95,16 @@ let coffees = [
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
+
+// NOT SURE ABOUT LOCAL STORAGE AND WHY I COULDN'T SET newCoffeeProduct INTO LOCAL STORAGE IN addNewCoffee FUNCTION, AND THEN JUST coffees.push(JSON.parse(localStorage.getItem('newCoffeeProduct');
 // Gets 'newCoffee' key from local and parses the value (since it was an object and local storage only stores strings)
-let addedCoffees = localStorage.getItem('newCoffee');
-let addedCoffees2 = JSON.parse(addedCoffees)
-coffees.push(addedCoffees2);
+let addedCoffees = JSON.parse(localStorage.getItem('newCoffee'));
+// Combined the below into the variable above
+// let addedCoffees2 = JSON.parse(addedCoffees)
+coffees.push(addedCoffees);
+
+
 // Changes the body of the table to have the divs created by renderCoffee() and the coffees created by renderCoffees()
 tbody.innerHTML = renderCoffees(coffees);
-
+// Updates coffees when the form is submitted
 submitButton.addEventListener('click', updateCoffees);
